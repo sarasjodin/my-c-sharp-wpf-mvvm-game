@@ -1,6 +1,6 @@
 # 🖥️ TicTacPancakes
 
-<img width="3832" height="2025" alt="image" src="" />
+<img width="3825" height="2025" alt="startpage" src="https://github.com/user-attachments/assets/5bd576b4-f48b-4e41-8700-572d59143acc" />
 
 
 Ett nybörjarprojekt i **C# WPF** med **MVVM-arkitektur**, initialt utvecklat som ett grupparbete.
