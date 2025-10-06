@@ -1,0 +1,155 @@
+﻿<UserControl
+    x:Class="SUP.Views.StartView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SUP.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:SUP.ViewModels"
+    mc:Ignorable="d">
+    <Grid d:DataContext="{d:DesignInstance Type=vm:StartViewModel, IsDesignTimeCreatable=False}" Background="#FFB9E6ED">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            FontSize="55"
+            FontWeight="SemiBold"
+            Foreground="Black">
+            <Run Text="TicTacPancakes" />
+            <Run
+                BaselineAlignment="TextTop"
+                FontSize="25"
+                Text="©" />
+        </TextBlock>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Viewbox
+                Grid.Column="0"
+                Margin="40,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Stretch="Uniform">
+                <Image Source="/Assets/Icons/tictacpancakes.png" Stretch="Uniform" />
+            </Viewbox>
+
+            <StackPanel
+                Grid.Column="1"
+                Margin="20"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top">
+
+                <TextBlock
+                    x:Name="textBlock"
+                    Height="50"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    FontSize="20"
+                    Text=""
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    x:Name="textBlock2"
+                    Padding="30,0,50,0"
+                    FontSize="32"
+                    FontWeight="SemiBold"
+                    Foreground="#FF004140"
+                    Text="Wanna play with Me...?"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    x:Name="textBlock3"
+                    Height="150"
+                    VerticalAlignment="Top"
+                    FontSize="32"
+                    FontWeight="SemiBold"
+                    Foreground="#FF004140"
+                    Text="...or are you afraid to lose?"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+
+                <Button
+                    Width="200"
+                    Height="100"
+                    Margin="10,10,20,20"
+                    Padding="3,3,10,7"
+                    Background="#FF017978"
+                    Command="{Binding StartCommand}"
+                    FontSize="40"
+                    FontWeight="SemiBold"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="48"
+                            Height="48"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/play_arrow.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Spela" />
+                    </StackPanel>
+                </Button>
+
+                <Button
+                    Width="200"
+                    Margin="10"
+                    Padding="3"
+                    Background="White"
+                    Command="{Binding ShowScoreboardCommand}"
+                    FontSize="22"
+                    FontWeight="SemiBold"
+                    Foreground="Black">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/social_leaderboard.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text=" Placering" />
+                    </StackPanel>
+                </Button>
+
+                <Button
+                    Width="200"
+                    Padding="3"
+                    Background="White"
+                    Command="{Binding ShowRulesCommand}"
+                    FontSize="22"
+                    FontWeight="SemiBold"
+                    Foreground="Black">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/developer_guide.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text=" Spelregler" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom">
+                <Image
+                    Width="120"
+                    Height="230"
+                    Source="/Assets/Icons/logo.png" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,162 @@
+﻿<UserControl
+    x:Class="SUP.Views.ScoreboardView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:m="clr-namespace:SUP.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:s="clr-namespace:SUP.Services"
+    xmlns:vm="clr-namespace:SUP.ViewModels"
+    mc:Ignorable="d">
+    <Grid d:DataContext="{d:DesignInstance Type=vm:ScoreboardViewModel, IsDesignTimeCreatable=False}" Background="#008e9b">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            FontSize="50"
+            Foreground="White"
+            Text="{Binding Title, FallbackValue=Scoreboard}" />
+
+        <TextBlock
+            Grid.Row="1"
+            Margin="0,0,0,10"
+            HorizontalAlignment="Center"
+            FontSize="14"
+            FontWeight="Thin"
+            Foreground="White"
+            Text="{Binding StatusMessage, FallbackValue=Senaste uppdatering}" />
+        <!--  Leaderboardsektion  -->
+        <DataGrid
+            Grid.Row="3"
+            Margin="350,0"
+            AutoGenerateColumns="False"
+            BorderThickness="0"
+            CanUserSortColumns="False"
+            HeadersVisibility="Column"
+            ItemsSource="{Binding Leaderboard}">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsCurrentPlayer}" Value="True">
+                            <Setter Property="Background" Value="#334FDFFF" />
+                            <Setter Property="FontWeight" Value="SemiBold" />
+                        </DataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsCurrentPlayer}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background" Value="#66FFD54F" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="60"
+                    Binding="{Binding Rank}"
+                    FontSize="40"
+                    Header="#" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Nickname}"
+                    FontSize="40"
+                    Header="Nickname" />
+                <DataGridTextColumn
+                    Width="120"
+                    Binding="{Binding TotalPoints, StringFormat={}{0:0}}"
+                    FontSize="40"
+                    Header="Total" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border
+            Grid.Row="4"
+            Margin="0,20,0,0"
+            Background="#FF84C5CB">
+            <StackPanel
+                Margin="12"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding ShowStartCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/home.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Tillbaka till start" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding StartNewGameCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/person_edit.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Byt spelare" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding RestartCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/restart.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Spela igen" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding RefreshCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/restart.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Uppdatera lista" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

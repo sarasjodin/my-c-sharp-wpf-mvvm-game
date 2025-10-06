@@ -1,0 +1,266 @@
+﻿<UserControl
+    x:Class="SUP.Views.RulesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:SUP.ViewModels"
+    mc:Ignorable="d">
+    <Grid d:DataContext="{d:DesignInstance vm:RulesViewModel}" Background="#008e9b">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,0,0,50"
+            HorizontalAlignment="Center"
+            FontSize="50"
+            Foreground="White"
+            Text="{Binding Title, FallbackValue=FallbackTitle}" />
+
+        <StackPanel
+            Grid.Row="1"
+            Width="1000"
+            HorizontalAlignment="Center"
+            Orientation="Vertical">
+
+            <StackPanel
+                Width="550"
+                Height="80"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="DarkGray"
+                Orientation="Horizontal">
+                <Image
+                    Width="50"
+                    Height="50"
+                    Margin="25,0,25,0"
+                    VerticalAlignment="Center"
+                    Source="/Assets/Icons/supercell_score.png" />
+                <TextBlock
+                    Width="424"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="Black"
+                    TextWrapping="Wrap">
+                    <Run FontWeight="Bold" Text="Supercell:" />
+                    <Run Text="Om en spelare vinner med en supercell ger det 1 extrapoäng." />
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel
+                Width="550"
+                Height="70"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="White"
+                Orientation="Horizontal">
+                <Image
+                    Width="50"
+                    Height="50"
+                    Margin="25,0,25,0"
+                    VerticalAlignment="Center"
+                    Source="/Assets/Icons/pancake-monster.png" />
+                <TextBlock
+                    Width="428"
+                    Height="54"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="Black"
+                    TextWrapping="Wrap">
+                    <Run FontWeight="Bold" Text="Pannkaksmonster:" />
+                    <Run Text="Blockerar en ruta och den kan inte användas av någon spelare." />
+                </TextBlock>
+            </StackPanel>
+            <StackPanel
+                Width="550"
+                Height="90"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="DarkGray"
+                Orientation="Horizontal">
+                <Image
+                    Width="50"
+                    Height="50"
+                    Margin="25,0,25,0"
+                    VerticalAlignment="Center"
+                    Source="/Assets/Icons/timer_new.png" />
+                <TextBlock
+                    Grid.Column="1"
+                    Width="430"
+                    Height="84"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="Black"
+                    TextWrapping="Wrap">
+                    <Run FontWeight="Bold" Text="Timer:" />
+                    <Run Text="Varje spelare har 10 sekunder på sig att utföra ett drag." />
+                    <Run Text="Om tiden går ut innan en spelare lagt sin symbol får motståndaren poäng" />
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel
+                Width="550"
+                Height="70"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="White"
+                Orientation="Horizontal">
+                <Image
+                    Width="50"
+                    Height="50"
+                    Margin="25,0,25,0"
+                    VerticalAlignment="Center"
+                    Source="/Assets/Icons/monsters_mouth.png" />
+                <TextBlock
+                    Width="422"
+                    Height="55"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="Black"
+                    TextWrapping="Wrap">
+                    <Run FontWeight="Bold" Text="Äta motståndare:" />
+                    <Run Text="Efter att ha vunnit en runda kan du äta upp en motståndares symbol." />
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel
+                Width="550"
+                Height="80"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="DarkGray"
+                Orientation="Horizontal">
+                <Image
+                    Width="50"
+                    Height="50"
+                    Margin="25,0,25,0"
+                    VerticalAlignment="Center"
+                    Source="/Assets/Icons/round.png" />
+                <TextBlock
+                    Width="424"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="Black"
+                    TextWrapping="Wrap">
+                    <Run FontWeight="Bold" Text="Poäng:" />
+                    <Run Text="En match/runda ger 1 p." />
+                </TextBlock>
+            </StackPanel>
+            <StackPanel
+                Width="550"
+                Height="80"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="White"
+                Orientation="Horizontal">
+                <Image
+                    Width="50"
+                    Height="50"
+                    Margin="25,0,25,0"
+                    VerticalAlignment="Center"
+                    Source="/Assets/Icons/series.png" />
+                <TextBlock
+                    Width="424"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="Black"
+                    TextWrapping="Wrap">
+                    <Run FontWeight="Bold" Text="Poäng:" />
+                    <Run Text="Vinner man en serie får man ytterligare 5 p." />
+                </TextBlock>
+            </StackPanel>
+            <StackPanel
+                Width="550"
+                Height="80"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="DarkGray"
+                Orientation="Horizontal">
+                <Image
+                    Width="75"
+                    Height="75"
+                    Margin="10,0,15,0"
+                    VerticalAlignment="Center"
+                    Source="/Assets/Icons/numpad.png" />
+                <TextBlock
+                    Width="424"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="Black"
+                    TextWrapping="Wrap">
+                    <Run FontWeight="Bold" Text="NumPad" />
+                    <Run Text="Det går att använda numpads för att lägga markörer på spelplanen." />
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <Border
+            Grid.Row="3"
+            Margin="0,20,0,0"
+            Background="#FF84C5CB">
+            <StackPanel
+                Margin="12"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding ShowStartCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/home.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Tillbaka till start" />
+                    </StackPanel>
+                </Button>
+
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding StartNewGameCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/home.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Byt spelare" />
+                    </StackPanel>
+                </Button>
+
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding RestartCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/home.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Starta om spel" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,87 @@
+﻿<Application
+    x:Class="SUP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:SUP.Views.Converters"
+    xmlns:local="clr-namespace:SUP"
+    xmlns:v="clr-namespace:SUP.Views"
+    xmlns:vm="clr-namespace:SUP.ViewModels">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type vm:StartViewModel}">
+            <v:StartView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:BoardViewModel}">
+            <v:BoardView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EndViewModel}">
+            <v:EndView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ScoreboardViewModel}">
+            <v:ScoreboardView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RulesViewModel}">
+            <v:RulesView />
+        </DataTemplate>
+
+        <c:CellStateToImageConverter x:Key="CellToImage" />
+
+        <!--  Global knappstil framförallt rundade hörn och hover/pressed  -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid SnapsToDevicePixels="True">
+                            <!--  Bas  -->
+                            <Border
+                                x:Name="Base"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="20" />
+
+                            <!--  Hover-overlay  -->
+                            <Border
+                                x:Name="HoverOverlay"
+                                Background="White"
+                                CornerRadius="20"
+                                IsHitTestVisible="False"
+                                Opacity="0" />
+
+                            <!--  Pressed-overlay  -->
+                            <Border
+                                x:Name="PressedOverlay"
+                                Background="Black"
+                                CornerRadius="20"
+                                IsHitTestVisible="False"
+                                Opacity="0" />
+
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                RecognizesAccessKey="True" />
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="HoverOverlay" Property="Opacity" Value="0.4" />
+                                <Setter TargetName="PressedOverlay" Property="Opacity" Value="0" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="HoverOverlay" Property="Opacity" Value="0" />
+                                <Setter TargetName="PressedOverlay" Property="Opacity" Value="0.5" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.6" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

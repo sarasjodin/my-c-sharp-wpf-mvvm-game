@@ -1,0 +1,163 @@
+﻿<UserControl
+    x:Class="SUP.Views.EndView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SUP.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:SUP.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    <Grid d:DataContext="{d:DesignInstance Type=vm:EndViewModel, IsDesignTimeCreatable=False}" Background="#008e9b">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  2 gemensamma rubriker  -->
+        <StackPanel
+            Width="Auto"
+            Height="70"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Image Height="80" Source="/Assets/Icons/trophy.png" />
+            <TextBlock
+                Grid.Row="0"
+                Width="488"
+                Margin="30,0"
+                FontSize="50"
+                Foreground="White"
+                Text="{Binding Title, FallbackValue=FallbackTitle}" />
+        </StackPanel>
+        <TextBlock
+            Grid.Row="1"
+            Margin="0,40,0,25"
+            FontSize="40"
+            FontWeight="SemiBold"
+            Foreground="White"
+            Text="{Binding StatusMessage, FallbackValue=FallbackStatusMessage}"
+            TextAlignment="Center" />
+
+        <!--  DRAW collapsed (Visible när ShowDraw=true)  -->
+        <StackPanel
+            Grid.Row="2"
+            Width="800"
+            HorizontalAlignment="Center"
+            Background="Transparent"
+            Visibility="{Binding ShowDraw, Converter={StaticResource BoolToVis}}">
+            <TextBlock
+                Margin="0,40,0,25"
+                FontSize="40"
+                FontWeight="SemiBold"
+                Foreground="White"
+                Text="{Binding DrawMessage, FallbackValue=FallbackDrawMessage}"
+                TextAlignment="Center" />
+        </StackPanel>
+
+        <!--  WIN synlig (Collapsed när ShowWin=false)  -->
+        <StackPanel
+            Grid.RowSpan="5"
+            Width="1000"
+            Height="600"
+            Margin="0,-75,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Orientation="Horizontal"
+            Visibility="{Binding ShowWin, Converter={StaticResource BoolToVis}}">
+
+            <Image
+                Width="250"
+                Height="500"
+                Margin="25,40,25,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Source="/Assets/Icons/trophy_colored.png" />
+            <TextBlock
+                Width="504"
+                Height="85"
+                Margin="25,40,25,0"
+                FontSize="40"
+                FontWeight="SemiBold"
+                Foreground="White"
+                Text="{Binding WinMessage, FallbackValue=FallbackWinMessage}"
+                TextAlignment="Center" />
+        </StackPanel>
+        <Border
+            Grid.Row="4"
+            Margin="0,20,0,0"
+            Background="#FF84C5CB">
+            <StackPanel
+                Margin="12"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding ShowStartCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/home.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Tillbaka till start" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding StartNewGameCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/person_edit.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Byt spelare" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding RestartCommand}"
+                    Foreground="White">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,8,0"
+                            Source="/Assets/Icons/restart.png"
+                            Stretch="Uniform" />
+                        <TextBlock VerticalAlignment="Center" Text="Spela igen" />
+                    </StackPanel>
+                </Button>
+                <Button
+                    Width="200"
+                    Margin="20,0"
+                    Padding="20,10"
+                    Background="#008e9b"
+                    Command="{Binding ShowScoreboardCommand}"
+                    Content="Visa Scoreboard"
+                    Foreground="White" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
